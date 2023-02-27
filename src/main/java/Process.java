@@ -31,7 +31,7 @@ public class Process {
     public void process(){
         Scanner input = new Scanner(System.in);
         int select;
-        int bakiye = 0;
+        int balance = 0;
 
         do {
             System.out.println("Ürün Numarasını Girin" + "\nÇıkmak Icin 0 tusuna basiniz");
@@ -40,7 +40,7 @@ public class Process {
                 System.out.println(productList.get(select-1).getProductName()+ " sectiniz. " +
                         "Ucreti = " +productList.get(select-1).getPrice() + " TL");
 
-                if (bakiye < productList.get(select-1).getPrice()) {
+                if (balance < productList.get(select-1).getPrice()) {
                     do {
                         System.out.println("Parayı Yerleştirin\n 1 Tl 5 TL 10 TL 20 TL");
                         int para = input.nextInt();
@@ -50,20 +50,20 @@ public class Process {
                             case 5:
                             case 10:
                             case 20:
-                                bakiye += para;
+                                balance += para;
                                 break;
                             default:
                                 System.out.println("Geçersiz Para!");
                         }
-                    } while (productList.get(select-1).getPrice()> bakiye);
+                    } while (productList.get(select-1).getPrice()> balance);
                 }
-                bakiye -= productList.get(select-1).getPrice();
+                balance -= productList.get(select-1).getPrice();
 
-                System.out.println(productList.get(select-1).getProductName() + " aldınız.\nBakiyeniz = " + bakiye +" Tl");
+                System.out.println(productList.get(select-1).getProductName() + " aldınız.\nBakiyeniz = " + balance +" Tl");
             } else if (select == 0) {
                 System.out.println("Teşekkür Ederiz");
-                if (bakiye > 0) {
-                    System.out.println("Para Üstünü Alınız : " + bakiye+" TL");
+                if (balance > 0) {
+                    System.out.println("Para Üstünü Alınız : " + balance+" TL");
                     break;
                 }else{
                     break;
